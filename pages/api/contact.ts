@@ -39,6 +39,5 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(200).json({ message: 'Successfully submitted' })
     client.close()
   }
-  res.status(200).json({ message: 'Invalid Access' })
 }
 export default handler
