@@ -1,4 +1,6 @@
+import Allposts from '@/components/posts/Allposts'
+
 const AllPostPage = () => {
-  return <div>AllPostPage</div>
+  return <Allposts />
 }
 export default AllPostPage

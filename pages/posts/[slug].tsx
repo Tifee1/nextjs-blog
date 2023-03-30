@@ -1,4 +1,6 @@
+import PostDetails from '@/components/posts/PostDetails'
+
 const SinglePostPage = () => {
-  return <h2>SinglePostPage</h2>
+  return <PostDetails />
 }
 export default SinglePostPage
