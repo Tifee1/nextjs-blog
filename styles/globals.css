@@ -115,6 +115,12 @@ h4 {
 .markdown p {
   color: #343036;
 }
+.markdown h1,
+h2,
+h3,
+h4 {
+  padding: 24px 0;
+}
 
 .markdown .image {
   margin: 4px auto;

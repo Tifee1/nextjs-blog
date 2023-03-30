@@ -1,10 +1,16 @@
+import { PostType } from '../helpers/api-utils'
+import Postgrid from './Postgrid'
 import SinglePost from './SinglePost'
 
-const Allposts = () => {
+type Props = {
+  posts: PostType[]
+}
+
+const Allposts = ({ posts }: Props) => {
   return (
     <section className='py-8 w-[90%] max-w-[60rem] mx-auto'>
       <h2 className='text-center pb-4'>All Posts</h2>
-      <SinglePost />
+      <Postgrid posts={posts} />
     </section>
   )
 }

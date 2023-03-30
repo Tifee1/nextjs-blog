@@ -1,34 +1,39 @@
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Link from 'next/link'
+import { PostType } from '../helpers/api-utils'
+import day from 'dayjs'
 
-const SinglePost = () => {
+type Props = {
+  post: PostType
+}
+
+const SinglePost = ({ post }: Props) => {
+  const imagePath = `/images/posts/${post.slug}/${post.image}`
+  const linkPath = `/posts/${post.slug}`
+
   return (
-    <section className='grid grid-cols-[repeat(auto-fill,_minmax(20rem,_1fr))] gap-6 content-center pt-8'>
-      <article className='bg-[#343036] shadow-2xl grid text-center text-white/70'>
-        <Link href='/posts/hello-world'>
-          <div className='w-full max-h-80 overflow-hidden'>
-            <Image
-              src='/images/posts/nextjs-file-based-routing/nextjs-file-based-routing.png'
-              alt='nextjs-file-based-routing'
-              width={300}
-              height={200}
-              className='object-cover'
-              layout='responsive'
-            />
-          </div>
-          <div className='my-6 mx-4'>
-            <h3 className='mb-2'>title</h3>
-            <p className='italic text-white/40 text-sm'>date</p>
-            <p className='leading-6 text-sm'>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus,
-              placeat obcaecati, molestias ut adipisci, at possimus inventore
-              numquam laudantium laborum architecto aspernatur vitae voluptas
-              nihil.
-            </p>
-          </div>
-        </Link>
-      </article>
-    </section>
+    <article className='bg-[#343036] shadow-2xl grid text-center text-white/70'>
+      <Link href={linkPath}>
+        <div className='w-full max-h-80 overflow-hidden'>
+          <Image
+            src={imagePath}
+            alt={post.title}
+            width={300}
+            height={200}
+            priority
+            className='object-cover'
+            layout='responsive'
+          />
+        </div>
+        <div className='my-6 mx-4'>
+          <h3 className='mb-2'>{post.title}</h3>
+          <p className='italic text-white/40 text-sm'>
+            {day(post.date).format('MMMM DD, YYYY')}
+          </p>
+          <p className='leading-6 text-sm'>{post.excerpt}</p>
+        </div>
+      </Link>
+    </article>
   )
 }
 
