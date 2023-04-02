@@ -18,7 +18,7 @@ export const authOptions: NextAuthOptions = {
         const user = await collection.findOne({ email: credentials!.email })
         if (!user) {
           client.close()
-          throw new Error('user not found')
+          throw new Error('User not found')
         }
         const passwordValid = await comparePassword(
           credentials!.password,

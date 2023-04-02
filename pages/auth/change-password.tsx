@@ -72,7 +72,6 @@ export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   const session = await getServerSession(context.req, context.res, authOptions)
-  console.log(session)
 
   if (!session) {
     return {
@@ -84,8 +83,6 @@ export const getServerSideProps = async (
   }
 
   return {
-    props: {
-      session,
-    },
+    props: {},
   }
 }

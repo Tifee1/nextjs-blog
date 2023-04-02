@@ -29,8 +29,12 @@ const LoginPage = () => {
         email,
         password,
       })
-      console.log(response)
 
+      if (response?.status !== 200) {
+        toast.error(response?.error)
+      } else {
+        console.log('login successful')
+      }
       return
     }
 
